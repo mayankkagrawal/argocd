@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pilot-hello-app
+  name: pilot-hello-app-dpl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pilot-hello-app
+  template:
+    metadata:
+      labels:
+        app: pilot-hello-app
+    spec:
+      containers:
+      - image: gcr.io/google-samples/hello-app:2.0
+        name: pilot-hello-app
+        ports:
+        - containerPort: 8080
